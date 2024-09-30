@@ -8,4 +8,9 @@ sudo dnf upgrade
 sudo yum install snapd
 sudo systemctl enable --now snapd.socket
 sudo ln -s /var/lib/snapd/snap /snap
-PATH=/snap/bin/:$PATH
+
+# setup docker
+sudo dnf config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo
+sudo dnf install docker-ce docker-ce-cli containerd.io -y
+sudo systemctl start docker
+sudo docker --version
