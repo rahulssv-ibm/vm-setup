@@ -26,6 +26,7 @@ git pull
 
 # Build the 'lxd' service quietly
 sudo systemctl restart docker.socket
-docker compose build -q lxd 
+# docker compose build -q lxd 
+docker compose build lxd 
 # Start the 'lxd' service in detached mode using the prod-compose.yml file
 docker compose -f prod-compose.yml up -d lxd 
