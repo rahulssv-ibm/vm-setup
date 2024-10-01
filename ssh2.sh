@@ -11,7 +11,7 @@ lxc storage set default volume.block.filesystem xfs
 lxc network set lxdbr0 ipv6.firewall false
 lxc network set lxdbr0 ipv4.firewall false
 sudo systemctl reload snap.lxd.daemon
-
+sleep 10
 cd ..
 ./setup-build-env.sh -s 8
 cd ..
