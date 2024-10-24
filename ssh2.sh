@@ -1,7 +1,7 @@
 #!/bin/bash
 # Ensure the script exits if a command fails
 set -e
-sudo snap install lxd -y
+sudo snap install lxd
 PATH=/snap/bin/:$PATH
 git clone https://github.com/rahulssv-ibm/gaplib.git
 cd gaplib/build-files
