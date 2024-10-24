@@ -16,7 +16,7 @@ cd ..
 ./setup-build-env.sh -s 8
 cd ..
 
-sudo apt-get -y install podman
+sudo dnf -y install podman
 echo "${PODMAN_PASSWORD}" | podman login $img -u "${PODMAN_USERNAME}" --password-stdin
 podman run --name lxd-app -d  -v /var/snap/lxd/common/lxd/unix.socket:/var/snap/lxd/common/lxd/unix.socket --env-file env.prod.example $img/lxd-app
 
