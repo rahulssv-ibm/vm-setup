@@ -15,7 +15,7 @@ lxc storage set default volume.block.filesystem xfs
 cd ..
 ./setup-build-env.sh -s 8
 cd ..
-
+cd ..
 sudo dnf -y install podman
 echo "${PODMAN_PASSWORD}" | podman login $img -u "${PODMAN_USERNAME}" --password-stdin
 podman run --name lxd-app -d  -v /var/snap/lxd/common/lxd/unix.socket:/var/snap/lxd/common/lxd/unix.socket --env-file env.prod.example $img/lxd-app
