@@ -4,8 +4,8 @@ set -e
 sudo snap install lxd
 export PATH=/snap/bin/:$PATH
 git clone https://github.com/rahulssv-ibm/gaplib.git
-git checkout ubuntu2204
 cd gaplib/build-files
+git checkout ubuntu2204
 cat lxd-preseed.yaml | lxd init --preseed
 lxc storage set default volume.block.filesystem xfs
 
