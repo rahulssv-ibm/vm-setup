@@ -4,6 +4,7 @@ set -e
 sudo snap install lxd
 export PATH=/snap/bin/:$PATH
 git clone https://github.com/rahulssv-ibm/gaplib.git
+git checkout ubuntu2204
 cd gaplib/build-files
 cat lxd-preseed.yaml | lxd init --preseed
 lxc storage set default volume.block.filesystem xfs
@@ -15,7 +16,7 @@ systemctl restart systemd-sysctl
 # sudo systemctl reload snap.lxd.daemon
 # sleep 10
 cd ..
-./setup-build-env.sh -s 8
+./setup-build-env.sh
 cd ..
 cd ..
 
@@ -23,9 +24,9 @@ export GATEWAY_IP=$(ip r| grep "/24 via" | awk '{print $3}')
 sudo ip route add 166.9.52.42 via $GATEWAY_IP  # Add route for private redis endpoint
 
 # setup podman
-sudo dnf -y install podman
-echo "${PODMAN_PASSWORD}" | podman login $img -u "${PODMAN_USERNAME}" --password-stdin
-podman run --name lxd-app -d  -v /var/snap/lxd/common/lxd/unix.socket:/var/snap/lxd/common/lxd/unix.socket --env-file env.prod.example $img/lxd-app
+# sudo dnf -y install podman
+# echo "${PODMAN_PASSWORD}" | podman login $img -u "${PODMAN_USERNAME}" --password-stdin
+# podman run --name lxd-app -d  -v /var/snap/lxd/common/lxd/unix.socket:/var/snap/lxd/common/lxd/unix.socket --env-file env.prod.example $img/lxd-app
 
 # setup docker
 # sudo dnf config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo
